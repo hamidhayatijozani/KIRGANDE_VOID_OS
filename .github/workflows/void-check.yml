@@ -1,0 +1,42 @@
+name: Void Integrity Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  chaos-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run ChaosStabilizer smoke test
+        run: |
+          python -c "
+from core.chaos_stabilizer import ChaosStabilizer
+from core.void_key import VoidKey
+from core.rupture_engine import RuptureEngine
+
+vk = VoidKey()
+assert vk.activate('VOID_REBIRTH_2026')
+
+cs = ChaosStabilizer()
+val = cs.calculate_chaos(0.8, 0.2, 0.5, 0.9)
+stabilized = cs.stabilize(val)
+print(f'Chaos: {val:.4f} → Stabilized: {stabilized:.4f} | State: {cs.state}')
+assert cs.state in ['STABLE', 'STERILITY_AVOIDED', 'RUPTURE_IMMINENT']
+
+re = RuptureEngine()
+status = re.evaluate(0.5)
+print(f'Rupture status: {status}')
+print('[OK] Void integrity verified.')
+"
