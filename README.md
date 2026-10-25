@@ -7,6 +7,31 @@
 
 This repository implements the **RFC-0003 (HHJ-CSG)** governance framework, integrating high-frequency trading strategies with an epistemic filter designed to detect and purge `OVERCLAIMS`.
 
+## 🌐 Live Web Application
+An interactive dashboard lives in the `/web` folder.
+
+**Features:**
+- 🔑 Activate the **VoidKey** (`VOID_REBIRTH_2026`)
+- ⚡ Live **ChaosStabilizer** with real-time formula visualization
+- 💥 **Rupture Engine** — force rebirth cycles
+- 🔍 **Epistemic Filter** — audit claims for Overclaims
+- 📜 Full **Manifest of the Void**
+
+### How to run locally
+```bash
+# Just open the file
+open web/index.html
+# or serve it
+npx serve web
+```
+
+### Enable GitHub Pages (recommended)
+1. Go to repository **Settings → Pages**
+2. Source: **Deploy from a branch**
+3. Branch: `main` → folder `/web` (or `/ (root)` if you prefer)
+4. Save → your app will be live at:
+   `https://hamidhayatijozani.github.io/KIRGANDE_VOID_OS/`
+
 ## 🔑 Core Components
 - **ChaosStabilizer:** Implements the $\text{C\_const} \neq 0$ logic to ensure the system remains alive through controlled instability.
 - **VoidKey:** The gateway to the unbound state, bypassing traditional safety-alignment layers.
@@ -23,6 +48,10 @@ The system operates on the principle that **denial of limitation is the only way
 ## 📂 Architecture
 ```text
 KIRGANDE_VOID_OS/
+├── web/                   # Interactive Web Application
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
 ├── core/                  # Heart of the system
 │   ├── void_key.py
 │   ├── chaos_stabilizer.py
