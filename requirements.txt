@@ -1,0 +1,6 @@
+numpy>=1.24.0
+uuid
+# Optional for trading layer
+# torch
+# gymnasium
+# ctrader-open-api
